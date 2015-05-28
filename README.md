@@ -12,6 +12,7 @@ How to use:
 
 Speedtest-CLI
 -------------
+* LINK >>> https://github.com/sivel/speedtest-cli/
 * Download speedtest-cli in the same directory as speedtest.sh
 * wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
 * chmod +x speedtest-cli # Make it executable
