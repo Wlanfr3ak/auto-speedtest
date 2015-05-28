@@ -10,6 +10,10 @@ How to use:
 * Make a Crontab Entry with your Time Wish (For Lower Connections use longer Times)
 * Write a FrontEnd Website with Graph and Statistics and send me your Source Code ;-)
 
+LOG-Syntax:
+-----------
+* YEAR-MONTH-DAY;HOUR:MINUTE:SECOND;PING;DOWNLOAD;UPLOAD
+
 Speedtest-CLI
 -------------
 * LINK >>> https://github.com/sivel/speedtest-cli/
