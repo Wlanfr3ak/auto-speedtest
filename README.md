@@ -1,5 +1,5 @@
 # auto-speedtest
-My ISP has a FTTH Network with Coaxial Cable into the Appartments. In the middle of the Day the Download Speed was so slow that i have lower than 1 % from the Bandwith from my agreement. I now think they are stingy at the Peering Points... So i have decided to make Speedtest every 5 Minutes and Log the Speed to have a Overview.
+My ISP has a FTTH Network with Coaxial Cable into the Appartments. In the middle of the Day the Download Speed was so slow that i have lower than 1 % from the Bandwith from my agreement. I think they are stingy at the Peering Points... So i have decided to make Speedtest every 5 Minutes and Log the Speed to have a Overview.
 I hope you can use it to, please copy, share, fix and let send me Feedback im not good at Coding.
 
 How to use:
