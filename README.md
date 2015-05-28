@@ -3,14 +3,14 @@ My ISP has a FTTH Network with Coaxial Cable into the Appartments. In the middle
 I hope you can use it to, please copy, share, fix and let send me Feedback im not good at Coding.
 
 How to use:
+-----------
+* First Download Python and Speedtest-CLI*
+* Run speedtest.sh
+* Make a Crontab Entry with your Time Wish (For Lower Connections use longer Times)
+* Write a FrontEnd Website with Graph and Statistics and send me your Source Code ;-)
 
-1. First Download Python and Speedtest-CLI*
-
-2. Run speedtest.sh
-
-3. Make a Crontab Entry with your Time Wish (For Lower Connections use longer Times)
-4. Write a FrontEnd Website with Graph and Statistics and send me your Source Code ;-)
-
-* Download speedtest-cli in the same directory as speedtest.sh
+Speedtest-CLI
+-------------
+Download speedtest-cli in the same directory as speedtest.sh
 wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
 chmod +x speedtest-cli # Make it executable
