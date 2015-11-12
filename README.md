@@ -24,3 +24,11 @@ Speedtest-CLI
 * Download speedtest-cli in the same directory as speedtest.sh
 * wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
 * chmod +x speedtest-cli # Make it executable
+
+GraphBuilder:
+------------
+* This Module is under Development for the automatically export to a Website
+* sudo apt-get install python3 python3-mathplotlib
+* python3 GraphBuilder.py
+* At this Stage its read from test.csv and export in download.png, upload.png and ping.png
+* Later we plan to export with filenames with the dates etc.
