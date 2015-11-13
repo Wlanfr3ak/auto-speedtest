@@ -32,3 +32,13 @@ GraphBuilder:
 * python3 GraphBuilder.py
 * At this Stage its read from test.csv and export in download.png, upload.png and ping.png
 * Later we plan to export with filenames with the dates etc.
+
+Things that have to be fixed:
+-----------------------------
+* Some Rows in the *.csv are only with the Date and the Time and must be "corrected"
+* Write HTML Code for the Visualisation with Year, Month, Week, Day and Hours etc.
+
+Ideas for the Future:
+---------------------
+* Export/Backup the Data
+* Traffic extension with calculate the Traffic from the complete Router and the part of the Speedtest Traffic for a better overview
