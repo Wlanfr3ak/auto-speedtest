@@ -1,2 +1,6 @@
-![Alt text](download.png?raw=true "Optional Title")
-https://raw.githubusercontent.com/Wlanfr3ak/auto-speedtest/master/Graph-Builder/download.png
+Example Download Graph
+![DownloadGraph](download.png?raw=true "Upload Graph")
+Example Upload Graph
+![UploadGraph](upload.png?raw=true "Upload Graph")
+Example Ping Graph
+![PingGraph](ping.png?raw=true "Ping Graph")
