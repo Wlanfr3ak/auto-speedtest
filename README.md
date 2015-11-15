@@ -28,9 +28,9 @@ Speedtest-CLI
 GraphBuilder:
 ------------
 * This Module is under Development for the automatically export to a Website
-* sudo apt-get install python3 python3-mathplotlib
+* sudo apt-get install python3 python3-matplotlib
 * python3 GraphBuilder.py
-* At this Stage its read from test.csv and export in download.png, upload.png and ping.png
+* At this Stage its read from test.csv and expert in download.png, upload.png and ping.png
 * Later we plan to export with filenames with the dates etc.
 
 Things that have to be fixed:
