@@ -1,44 +1,55 @@
-# auto-speedtest
-My ISP has a FTTH Network with Coaxial Cable into the Appartments. In the middle of the Day the Download Speed was so slow that i have lower than 1 % from the Bandwith from my agreement. I think they are stingy at the Peering Points... So i have decided to make Speedtest every 5 Minutes and Log the Speed to have a Overview (and make a lots of Traffic </>evilsmiley</>).
+auto-speedtest
+==============
+My ISP has a FTTH network with coaxial cable running into appartments. In the middle of the day the download speed is so slow that I usually have about only 1% of the bandwith advertised in my agreement. I think they are stingy with adding more peering points... So I have decided to make speed tests every 5 minutes and log the results to have an overview (and make a lots of traffic `<evilsmiley />`).
 
-I hope you can use it too, please copy, share, fix and send me Feedback (im really bad at Coding).
+I hope you find it useful, too. Please copy, share, fix and send me feedback (I'm really bad at coding).
 
-How to use:
------------
-* First Download Python and Speedtest-CLI*
-* Run speedtest.sh
-* Make a Crontab Entry with your Time Wish (For Lower Connections use longer Times)
-* Write a FrontEnd Website with Graph and Statistics and send me your Source Code ;-)
+How to use
+----------
+1. First download Python and [speedtest-cli](#speedtest-cli)
+2. Run `speedtest.sh`
+3. Make a crontab entry with your desired time interval (for slower connections use greater time intervals)
+4. Write a frontend website with graphs and statistics and send me your source code ;-)
 
 Crontab
-* crontab -e
-* "*/5 *    * * *   /home/username/speedtest.sh > /dev/null" for 5 Minute
- 
-LOG-Syntax:
------------
-* YEAR-MONTH-DAY;HOUR:MINUTE:SECOND;PING;DOWNLOAD;UPLOAD
+-------
+1. Edit your contab with: `crontab -e`
+2. Insert a new line line like `*/5 *    * * *   /home/username/speedtest.sh > /dev/null` to run every 5 minutes
 
-Speedtest-CLI
+Log-Syntax
+----------
+The generated log file contains a new line for each measurement in the following format:
+
+	YEAR-MONTH-DAY;HOUR:MINUTE:SECOND;PING;DOWNLOAD;UPLOAD
+
+The values for `PING`, `DOWNLOAD` and `UPLOAD` are all floating point numbers.
+
+Speedtest-CLI<a name="speedtest-cli"></a>
 -------------
-* LINK >>> https://github.com/sivel/speedtest-cli/
-* Download speedtest-cli in the same directory as speedtest.sh
-* wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
-* chmod +x speedtest-cli # Make it executable
+[speedtest-cli](https://github.com/sivel/speedtest-cli/) is a:
+> Command line interface for testing internet bandwidth using speedtest.net
 
-GraphBuilder:
-------------
-* This Module is under Development for the automatically export to a Website
-* sudo apt-get install python3 python3-matplotlib
-* python3 GraphBuilder.py
-* At this Stage its read from test.csv and expert in download.png, upload.png and ping.png
-* Later we plan to export with filenames with the dates etc.
+1. Download `speedtest-cli` in the same directory as `speedtest.sh`:
+   `wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py`
+2. Make it executable: `chmod +x speedtest-cli`
 
-Things that have to be fixed:
------------------------------
-* Some Rows in the *.csv are only with the Date and the Time and must be "corrected"
-* Write HTML Code for the Visualisation with Year, Month, Week, Day and Hours etc.
+Graph-Builder
+-------------
+This module is experimental.
+It generates graphs from the log file which can be used on websites etc.
 
-Ideas for the Future:
----------------------
-* Export/Backup the Data
-* Traffic extension with calculate the Traffic from the complete Router and the part of the Speedtest Traffic for a better overview
+1. Install dependencies (Ubuntu): `sudo apt-get install python3 python3-matplotlib`
+2. Run it: `python3 graph-builder.py`
+
+This reads from `test.csv` and exports three images called `download.png`, `upload.png` and `ping.png` into the current directory.
+
+Things that have to be fixed
+----------------------------
+* Some rows in the `*.csv` log file only contain the date and the time and must be "corrected" (e.g. by removing them) otherwise the graph script will fail on these lines.
+
+Ideas for the Future
+--------------------
+* Export/Backup the data
+* Export the graph images for specific date ranges (day, month, year, custom range)
+* Write HTML code to show the graphs with selection of day, month, year etc.
+* Traffic extension which calculates the traffic passed through the router and the part of the speed test traffic for a better overview
