@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-#This part of auto-speedtest was writen from muellermartin under do What The Fuck you want to Public License
 
+# Written by @muellermartin
+# License: Do What the Fuck You Want to Public License (WTFPL)
 
 import matplotlib
 # Use a non-interactive backend
