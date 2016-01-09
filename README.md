@@ -1,6 +1,7 @@
 auto-speedtest
 ==============
 My ISP has a FTTH network with coaxial cable running into appartments. In the middle of the day the download speed is so slow that I usually have about only 1% of the bandwith advertised in my agreement. I think they are stingy with adding more peering points... So I have decided to make speed tests every 5 minutes and log the results to have an overview (and make a lots of traffic `<evilsmiley />`).
+
 [The Results you can see here](http://traffic.fabian-horst.com)
 
 I hope you find it useful, too. Please copy, share, fix and send me feedback (I'm really bad at coding).
