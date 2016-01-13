@@ -53,5 +53,7 @@ Ideas for the Future
 --------------------
 * Export/Backup the data
 * Export the graph images for specific date ranges (day, month, year, custom range)
-* Write HTML code to show the graphs with selection of day, month, year etc.
+* Write HTML code to show the graphs with selection of day, month, year etc. Alpha in index.html + generator.sh
 * Traffic extension which calculates the traffic passed through the router and the part of the speed test traffic for a better overview
+* Add Automatically Upload to a Website (Need Fixes free rows before !)
+* Add Capacity, problems with a AVM FritzBox in Internal LAN
