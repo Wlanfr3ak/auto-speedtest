@@ -1,0 +1,39 @@
+Um dieses Script zu nutzen ist ein Linux Betriebsystem am besten geignet, ein Raspberry Pi oder aehnlich bietet sich fuer
+dieses Zweck an.
+
+Installation:
+
+Zu erst muessen die Abhaengigkeiten aufgeloest werden. Hier im folgenden bei Ubuntu:
+  1. sudo apt-get update
+  2. sudo apt-get upgrade
+  3. sudo apt-get install python3 
+
+Dann kann das Repositorie mit den notwendigen Dateien kopiert werden:
+  git clone https://github.com/Wlanfr3ak/auto-speedtest
+alternativ auch als direkt Download zum entpacken ueber:
+  https://github.com/Wlanfr3ak/auto-speedtest/archive/master.zip
+  
+Nun muss in den Ordner mit:
+  cd auto-speedtest
+gewechselt werden.
+
+Dort muss der Speedtest.net Python Client hin heruntergeladen werden:
+  wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
+Diese Datei muss dann noch ausfuehrbar gemacht werden:
+  chmod +x speedtest-cli
+  
+Nun kann das Script mit dem Befehl:
+  ./speedtest.sh
+gestartet werden.
+
+Damit das Script automatisch alle 5 Minuten ausgefuehrt wird muss es in einem Cronjob hinterlegt werden.
+Dies geht mit dem Aufruf:
+ crontab -e
+Es oeffnet sich ein Editor wo nach den # folgende Zeile hinzugefuegt werden muss:
+  */5 * * * * /home/username/speedtest.sh > /dev/null
+Der entscheide dene Wert ist die 5, dieser kann durch beliebigen Wert von 1-59 ausgetauscht werden.
+Nun die Datei speichern und nach einiger Zeit mit:
+ cat speedtestausgabe-127.0.0.1.csv
+Die Ausgabe kontrollieren, die IP Adresse ist dann nicht wie hier im Beispiel sondern die eigene Externe Adresse.
+In der Datei wird folgende Syntax gefuehrt:
+Jahr-Monat-Tag:Stunden:Minuten:Sekunden;Ping;Download;Upload
