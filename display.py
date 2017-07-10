@@ -37,5 +37,5 @@ lcd.write_string(formatline("P: ", sys.argv[3]))
 lcd.write_string(formatline("D: ", sys.argv[4]))
 lcd.write_string(formatline("U: ", sys.argv[5]))
 
-#Display nicht löschen nach Script stop mit false sonst nullt er das !
+#Display nicht loeschen nach Script stop mit false sonst nullt er das !
 lcd.close(clear=false)
