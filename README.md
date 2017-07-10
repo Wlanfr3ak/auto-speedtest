@@ -70,3 +70,6 @@ Ideas for the Future
 * Traffic extension which calculates the traffic passed through the router and the part of the speed test traffic for a better overview
 * Add Automatically Upload to a Website (Need Fixes free rows before !)
 * Add Capacity, problems with a AVM FritzBox in Internal LAN
+
+
+THX to AS25415 for Hosting Server ID 4617 under 212.51.1.42 <3
