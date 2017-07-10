@@ -38,6 +38,7 @@ Speedtest-CLI<a name="speedtest-cli"></a>
 Display
 -------------
 See this Links https://codingworld.io/project/das-20-x-4-zeichen-mit-dem-raspberry-pi
+sudo pip-3.2 install RPLCD
 
 Graph-Builder
 -------------
