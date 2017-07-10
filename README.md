@@ -45,6 +45,8 @@ sudo pip-3.2 install RPLCD
 
 add the display.py to your Directory and activate the Commented Line in the speedtest.sh to start the Script.
 
+Preview
+![alt text](https://github.com/Wlanfr3ak/auto-speedtest/blob/master/DisplaySpeedtest.jpg)
 
 Graph-Builder
 -------------
