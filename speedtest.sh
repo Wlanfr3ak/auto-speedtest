@@ -9,3 +9,5 @@ SPEED=$(echo $IN | tr "[:alpha:]+[/:]" "\n")
 OUT=$DATE$TIME$SPEED
 vf2=$(echo $OUT | tr ' ' ';')
 echo "$vf2" >> speedtestausgabe-$ip.csv
+#DisplayOutput
+#python3 display.py $OUT
