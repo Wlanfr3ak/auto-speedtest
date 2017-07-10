@@ -35,6 +35,10 @@ Speedtest-CLI<a name="speedtest-cli"></a>
    `wget -O speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py`
 2. Make it executable: `chmod +x speedtest-cli`
 
+Display
+-------------
+See this Links https://codingworld.io/project/das-20-x-4-zeichen-mit-dem-raspberry-pi
+
 Graph-Builder
 -------------
 This module is experimental.
