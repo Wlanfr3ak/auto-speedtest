@@ -58,9 +58,6 @@ It generates graphs from the log file which can be used on websites etc.
 
 This reads from `test.csv` and exports three images called `download.png`, `upload.png` and `ping.png` into the current directory.
 
-Things that have to be fixed
-----------------------------
-* Some rows in the `*.csv` log file only contain the date and the time and must be "corrected" (e.g. by removing them) otherwise the graph script will fail on these lines.
 
 Ideas for the Future
 --------------------
@@ -68,7 +65,7 @@ Ideas for the Future
 * Export the graph images for specific date ranges (day, month, year, custom range)
 * Write HTML code to show the graphs with selection of day, month, year etc. Alpha in index.html + generator.sh
 * Traffic extension which calculates the traffic passed through the router and the part of the speed test traffic for a better overview
-* Add Automatically Upload to a Website (Need Fixes free rows before !)
+* Add Automatically Upload to a Website 
 * Add Capacity, problems with a AVM FritzBox in Internal LAN
 
 
