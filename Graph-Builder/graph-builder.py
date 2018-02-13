@@ -34,6 +34,9 @@ ping = []
 download = []
 upload = []
 
+# Removes all incomplete lines
+os.system('ex \'+v/\d\{4}-\d\{2}-\d\{2};\d\{2}:\d\{2}:\d\{2};\d\+\.*\d*;\d\+\.\d*;\d\.\d\{2}/d\' -cwq ' + csvFile)
+
 # Process CSV file containing the data and prepare it for plotting
 with open(csvFile, "r") as f:
 	for line in f:
