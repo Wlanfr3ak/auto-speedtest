@@ -60,29 +60,20 @@ with open(csvFile, "r") as f:
 
 #plt.style.use("fivethirtyeight")
 
-fig, ax = plt.subplots()
-ax.plot_date(timestamps, ping, fmt="r-", xdate=True, ydate=False)
-yticks = list (np.linspace (min (ping), max(ping), 10))
-ax.set_yticks (yticks)
-yticks = ["{:5.2f}".format (x) for x in yticks]
-ax.set_yticklabels (yticks)
-fig.autofmt_xdate()
-plt.savefig("ping.png")
+def plot (x_list, y_list, color, out_file, x_label, y_label, title):
+    fig, ax = plt.subplots()
+    ax.plot_date(x_list, y_list, fmt=color, xdate=True, ydate=False)
+    yticks = list (np.linspace (min (y_list), max(y_list), 10))
+    ax.set_yticks (yticks)
+    yticks = ["{:5.2f}".format (x) for x in yticks]
+    ax.set_yticklabels (yticks)
+    ax.set_title(title)
+    ax.set_xlabel (x_label)
+    ax.set_ylabel (y_label)
+    fig.autofmt_xdate()
+    plt.savefig(out_file)
 
-fig, ax = plt.subplots()
-ax.plot_date(timestamps, download, fmt="g-", xdate=True, ydate=False)
-yticks = list (np.linspace (min (download), max(download), 10))
-ax.set_yticks (yticks)
-yticks = ["{:5.2f}".format (x) for x in yticks]
-ax.set_yticklabels (yticks)
-fig.autofmt_xdate()
-plt.savefig("download.png")
+plot (timestamps, ping, "r-", "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping")
+plot (timestamps, download, "g-", "download.png", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement")
+plot (timestamps, upload, "b-", "upload.png", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement")
 
-fig, ax = plt.subplots()
-ax.plot_date(timestamps, upload, fmt="b-", xdate=True, ydate=False)
-yticks = list (np.linspace (min (upload), max(upload), 10))
-ax.set_yticks (yticks)
-yticks = ["{:5.2f}".format (x) for x in yticks]
-ax.set_yticklabels (yticks)
-fig.autofmt_xdate()
-plt.savefig("upload.png")
