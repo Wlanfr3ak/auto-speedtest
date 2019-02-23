@@ -8,6 +8,7 @@ import matplotlib
 # Note: Needs to be called before importing pyplot!
 matplotlib.use("AGG")
 import matplotlib.pylab as plt
+import numpy as np
 
 import csv
 import os
@@ -51,25 +52,37 @@ with open(csvFile, "r") as f:
 		# Create datetime object from 1st & 2nd column and add it to the list
 		timestamps.append(datetime.datetime.strptime(columns[0] + columns[1], "%Y-%m-%d%H:%M:%S"))
 		# Add 3rd column to ping list
-		ping.append(columns[2])
+		ping.append(float (columns[2]))
 		# Add 4th column to download list
-		download.append(columns[3])
+		download.append(float (columns[3]))
 		# Add 5th column to upload list
-		upload.append(columns[4])
+		upload.append(float (columns[4]))
 
 #plt.style.use("fivethirtyeight")
 
 fig, ax = plt.subplots()
 ax.plot_date(timestamps, ping, fmt="r-", xdate=True, ydate=False)
+yticks = list (np.linspace (min (ping), max(ping), 10))
+ax.set_yticks (yticks)
+yticks = ["{:5.2f}".format (x) for x in yticks]
+ax.set_yticklabels (yticks)
 fig.autofmt_xdate()
 plt.savefig("ping.png")
 
 fig, ax = plt.subplots()
 ax.plot_date(timestamps, download, fmt="g-", xdate=True, ydate=False)
+yticks = list (np.linspace (min (download), max(download), 10))
+ax.set_yticks (yticks)
+yticks = ["{:5.2f}".format (x) for x in yticks]
+ax.set_yticklabels (yticks)
 fig.autofmt_xdate()
 plt.savefig("download.png")
 
 fig, ax = plt.subplots()
 ax.plot_date(timestamps, upload, fmt="b-", xdate=True, ydate=False)
+yticks = list (np.linspace (min (upload), max(upload), 10))
+ax.set_yticks (yticks)
+yticks = ["{:5.2f}".format (x) for x in yticks]
+ax.set_yticklabels (yticks)
 fig.autofmt_xdate()
 plt.savefig("upload.png")
