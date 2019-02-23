@@ -60,12 +60,16 @@ with open(csvFile, "r") as f:
 
 #plt.style.use("fivethirtyeight")
 
-def plot (x_list, y_list, color, out_file, x_label, y_label, title):
+def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, slt=None):
     fig, ax = plt.subplots()
     ax.plot_date(x_list, y_list, fmt=color, xdate=True, ydate=False)
     yticks = list (np.linspace (min (y_list), max(y_list), 10))
     ax.set_yticks (yticks)
     yticks = ["{:5.2f}".format (x) for x in yticks]
+    if sft != None:
+        yticks [0] = sft
+    if slt != None:
+        yticks [-1] = slt
     ax.set_yticklabels (yticks)
     ax.set_title(title)
     ax.set_xlabel (x_label)
@@ -73,7 +77,7 @@ def plot (x_list, y_list, color, out_file, x_label, y_label, title):
     fig.autofmt_xdate()
     plt.savefig(out_file)
 
-plot (timestamps, ping, "r-", "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping")
+plot (timestamps, ping, "r-", "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping", slt="infini")
 plot (timestamps, download, "g-", "download.png", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement")
 plot (timestamps, upload, "b-", "upload.png", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement")
 
