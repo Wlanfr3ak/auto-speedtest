@@ -8,7 +8,7 @@ cd "${work_dir}"
 
 # When no connection, this is practically equivalent to an infinite ping 
 # and nul speeds
-no_connection="100000 0.0 0.0"
+no_connection="999.0;0.0;0.0"
 
 vf=$(speedtest-cli --simple --server 21506)
 #ip=$(wget http://checkip.dyndns.org/ -q -O - | grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>')
@@ -17,9 +17,12 @@ DATE=$(date +"%Y-%m-%d")
 TIME=$(date +"%H:%M:%S")
 IN=$(echo $vf)
 SPEED=$(echo $IN | tr "[:alpha:]+[/:]" "\n")
-[ -z "${SPEED}" ] && SPEED="${no_connection}"
 OUT="${DATE} ${TIME} ${SPEED}"
 vf2=$(echo ${OUT} | tr ' ' ';')
+ping=$(echo "${vf2}" | cut -d';' -f3)
+echo "'${ping}'" >> /tmp/pings
+# If this field is empty, assume no connection:
+[ -z "${ping}" ] && OUT="${OUT};${no_connection}"
 echo "${vf2}" >> "${script_dir}/speedtest-${DATE}.csv"
 #DisplayOutpum
 #mython3 display.py $OUT
