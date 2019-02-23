@@ -14,7 +14,10 @@ import os
 import sys
 import datetime
 
-csvFile = "test.csv"
+if len(sys.argv) > 1:
+    csvFile = sys.argv[1]
+else:
+    csvFile = 'test.csv'
 
 if not os.path.exists(csvFile):
 	# Write error message to stderr instead of stdout
@@ -35,7 +38,7 @@ download = []
 upload = []
 
 # Removes all incomplete lines
-os.system('ex \'+v/\d\{4}-\d\{2}-\d\{2};\d\{2}:\d\{2}:\d\{2};\d\+\.*\d*;\d\+\.\d*;\d\.\d\{2}/d\' -cwq ' + csvFile)
+os.system('ex \'+v/\d\{4}-\d\{2}-\d\{2};\d\{2}:\d\{2}:\d\{2};\d\+\.\d*;\d\+\.\d*;\d\+\.\d*/d\' -cwq ' + csvFile)
 
 # Process CSV file containing the data and prepare it for plotting
 with open(csvFile, "r") as f:
