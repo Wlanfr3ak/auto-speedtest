@@ -20,9 +20,11 @@ SPEED=$(echo $IN | tr "[:alpha:]+[/:]" "\n")
 OUT="${DATE} ${TIME} ${SPEED}"
 vf2=$(echo ${OUT} | tr ' ' ';')
 ping=$(echo "${vf2}" | cut -d';' -f3)
-echo "'${ping}'" >> /tmp/pings
+
 # If this field is empty, assume no connection:
-[ -z "${ping}" ] && OUT="${OUT};${no_connection}"
+if [ "${ping}" = "" ]; then
+	vf2="${vf2};${no_connection}"
+fi
 echo "${vf2}" >> "${script_dir}/speedtest-${DATE}.csv"
 #DisplayOutpum
 #mython3 display.py $OUT
