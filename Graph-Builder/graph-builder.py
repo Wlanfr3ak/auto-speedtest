@@ -60,15 +60,15 @@ with open(csvFile, "r") as f:
 
 #plt.style.use("fivethirtyeight")
 
-def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, slt=None):
+def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, slt=None, sftcond=False, sltcond=False):
     fig, ax = plt.subplots()
     ax.plot_date(x_list, y_list, fmt=color, xdate=True, ydate=False)
-    yticks = list (np.linspace (min (y_list), max(y_list), 10))
+    yticks = list (np.linspace (0.0, max(y_list)*1.05, 10))
     ax.set_yticks (yticks)
     yticks = ["{:5.2f}".format (x) for x in yticks]
-    if sft != None:
+    if sftcond and sft != None:
         yticks [0] = sft
-    if slt != None:
+    if sltcond and slt != None:
         yticks [-1] = slt
     ax.set_yticklabels (yticks)
     ax.set_title(title)
@@ -79,7 +79,7 @@ def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, sl
 
 prefix = os.path.splitext(csvFile)[0] + "-"
 
-plot (timestamps, ping, "r-", prefix + "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping", slt="infini")
+plot (timestamps, ping, "r-", prefix + "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping", slt="infini", sltcond=max(ping) >= 999.0)
 plot (timestamps, download, "g-", prefix + "download.png", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement")
 plot (timestamps, upload, "b-", prefix + "upload.png", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement")
 
