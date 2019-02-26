@@ -78,8 +78,8 @@ def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, sl
     plt.savefig(out_file)
 
 prefix = os.path.splitext(csvFile)[0] + "-"
-
-plot (timestamps, ping, "r-", prefix + "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping", slt="infini", sltcond=max(ping) >= 999.0)
-plot (timestamps, download, "g-", prefix + "download.png", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement")
-plot (timestamps, upload, "b-", prefix + "upload.png", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement")
+today = '(' + str (timestamps[0])[:10] + ')'
+plot (timestamps, ping, "r-", prefix + "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
+plot (timestamps, download, "g-", prefix + "download.png", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
+plot (timestamps, upload, "b-", prefix + "upload.png", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
 
