@@ -75,11 +75,11 @@ def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, sl
     ax.set_xlabel (x_label)
     ax.set_ylabel (y_label)
     fig.autofmt_xdate()
-    plt.savefig(out_file)
+    plt.savefig(out_file, transparent=True)
 
 prefix = os.path.splitext(csvFile)[0] + "-"
 today = '(' + str (timestamps[0])[:10] + ')'
-plot (timestamps, ping, "r-", prefix + "ping.png", "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
-plot (timestamps, download, "g-", prefix + "download.png", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
-plot (timestamps, upload, "b-", prefix + "upload.png", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
+plot (timestamps, ping, "r-", prefix + "ping.pdf", "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
+plot (timestamps, download, "g-", prefix + "download.pdf", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
+plot (timestamps, upload, "b-", prefix + "upload.pdf", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
 
