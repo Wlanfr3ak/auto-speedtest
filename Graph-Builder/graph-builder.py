@@ -20,6 +20,16 @@ if len(sys.argv) > 1:
 else:
     csvFile = 'test.csv'
 
+if len (sys.argv) > 2:
+    plot_format = sys.argv [2]
+else:
+    plot_format = "pdf"
+
+if len (sys.argv) > 3:
+    prefix = sys.argv [3] + "-"
+else:
+    prefix = os.path.splitext(csvFile)[0] + "-"
+
 if not os.path.exists(csvFile):
 	# Write error message to stderr instead of stdout
 	print("File \"{}\" does not exist.".format(csvFile), file=sys.stderr)
@@ -77,9 +87,8 @@ def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, sl
     fig.autofmt_xdate()
     plt.savefig(out_file, transparent=True)
 
-prefix = os.path.splitext(csvFile)[0] + "-"
 today = '(' + str (timestamps[0])[:10] + ')'
-plot (timestamps, ping, "r-", prefix + "ping.pdf", "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
-plot (timestamps, download, "g-", prefix + "download.pdf", "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
-plot (timestamps, upload, "b-", prefix + "upload.pdf", "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
+plot (timestamps, ping, "r-", prefix + "ping." + plot_format, "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
+plot (timestamps, download, "g-", prefix + "download." + plot_format, "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
+plot (timestamps, upload, "b-", prefix + "upload." + plot_format, "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
 
