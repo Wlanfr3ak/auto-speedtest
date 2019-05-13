@@ -8,13 +8,27 @@ import matplotlib
 # Note: Needs to be called before importing pyplot!
 matplotlib.use("AGG")
 import matplotlib.pylab as plt
+import numpy as np
 
 import csv
 import os
 import sys
 import datetime
 
-csvFile = "test.csv"
+if len(sys.argv) > 1:
+    csvFile = sys.argv[1]
+else:
+    csvFile = 'test.csv'
+
+if len (sys.argv) > 2:
+    plot_format = sys.argv [2]
+else:
+    plot_format = "pdf"
+
+if len (sys.argv) > 3:
+    prefix = sys.argv [3] + "-"
+else:
+    prefix = os.path.splitext(csvFile)[0] + "-"
 
 if not os.path.exists(csvFile):
 	# Write error message to stderr instead of stdout
@@ -34,9 +48,6 @@ ping = []
 download = []
 upload = []
 
-# Removes all incomplete lines
-os.system('ex \'+v/\d\{4}-\d\{2}-\d\{2};\d\{2}:\d\{2}:\d\{2};\d\+\.*\d*;\d\+\.\d*;\d\.\d\{2}/d\' -cwq ' + csvFile)
-
 # Process CSV file containing the data and prepare it for plotting
 with open(csvFile, "r") as f:
 	for line in f:
@@ -48,25 +59,33 @@ with open(csvFile, "r") as f:
 		# Create datetime object from 1st & 2nd column and add it to the list
 		timestamps.append(datetime.datetime.strptime(columns[0] + columns[1], "%Y-%m-%d%H:%M:%S"))
 		# Add 3rd column to ping list
-		ping.append(columns[2])
+		ping.append(float (columns[2]))
 		# Add 4th column to download list
-		download.append(columns[3])
+		download.append(float (columns[3]))
 		# Add 5th column to upload list
-		upload.append(columns[4])
+		upload.append(float (columns[4]))
 
 #plt.style.use("fivethirtyeight")
 
-fig, ax = plt.subplots()
-ax.plot_date(timestamps, ping, fmt="r-", xdate=True, ydate=False)
-fig.autofmt_xdate()
-plt.savefig("ping.png")
+def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, slt=None, sftcond=False, sltcond=False):
+    fig, ax = plt.subplots()
+    ax.plot_date(x_list, y_list, fmt=color, xdate=True, ydate=False)
+    yticks = list (np.linspace (0.0, max(y_list)*1.05, 10))
+    ax.set_yticks (yticks)
+    yticks = ["{:5.2f}".format (x) for x in yticks]
+    if sftcond and sft != None:
+        yticks [0] = sft
+    if sltcond and slt != None:
+        yticks [-1] = slt
+    ax.set_yticklabels (yticks)
+    ax.set_title(title)
+    ax.set_xlabel (x_label)
+    ax.set_ylabel (y_label)
+    fig.autofmt_xdate()
+    plt.savefig(out_file, transparent=True)
 
-fig, ax = plt.subplots()
-ax.plot_date(timestamps, download, fmt="g-", xdate=True, ydate=False)
-fig.autofmt_xdate()
-plt.savefig("download.png")
+today = '(' + str (timestamps[0])[:10] + ')'
+plot (timestamps, ping, "r-", prefix + "ping." + plot_format, "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
+plot (timestamps, download, "g-", prefix + "download." + plot_format, "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
+plot (timestamps, upload, "b-", prefix + "upload." + plot_format, "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
 
-fig, ax = plt.subplots()
-ax.plot_date(timestamps, upload, fmt="b-", xdate=True, ydate=False)
-fig.autofmt_xdate()
-plt.savefig("upload.png")
