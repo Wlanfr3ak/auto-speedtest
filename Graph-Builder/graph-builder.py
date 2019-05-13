@@ -85,7 +85,7 @@ def plot (x_list, y_list, color, out_file, x_label, y_label, title, sft=None, sl
     plt.savefig(out_file, transparent=True)
 
 today = '(' + str (timestamps[0])[:10] + ')'
-plot (timestamps, ping, "r-", prefix + "ping." + plot_format, "Date/Heure", "Ping (ms)", "Durée de ping " + today, slt="infini", sltcond=max(ping) >= 999.0)
-plot (timestamps, download, "g-", prefix + "download." + plot_format, "Date/Heure", "Down (Mbit/s)", "Vitesse de Téléchargement " + today)
-plot (timestamps, upload, "b-", prefix + "upload." + plot_format, "Date/Heure", "UP (Mbit/s)", "Vitesse de Téléversement " + today)
+plot (timestamps, ping, "r-", prefix + "ping." + plot_format, "Date/Time", "Ping (ms)", "Ping Time " + today, slt="infini", sltcond=max(ping) >= 999.0)
+plot (timestamps, download, "g-", prefix + "download." + plot_format, "Date/Time", "Down (Mbit/s)", "Download Speed " + today)
+plot (timestamps, upload, "b-", prefix + "upload." + plot_format, "Date/Time", "UP (Mbit/s)", "Upload Speed " + today)
 
