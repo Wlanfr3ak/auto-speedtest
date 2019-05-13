@@ -9,6 +9,7 @@ I hope you find it useful, too. Please copy, share, fix and send me feedback (I'
 How to use
 ----------
 1. First download Python and [speedtest-cli](#speedtest-cli)
+"sudo apt-get install python speedtest-cli"
 2. Run `speedtest.sh` 
 3. Make a crontab entry with your desired time interval (for slower connections use greater time intervals) 
 4. Write a frontend website with graphs and statistics and send me your source code ;-)
