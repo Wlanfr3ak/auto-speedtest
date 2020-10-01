@@ -10,7 +10,11 @@ cd "${work_dir}"
 # and nul speeds
 no_connection="999.0;0.0;0.0"
 
-vf=$(speedtest-cli --simple --server 4617)
+#old version
+#vf=$(speedtest-cli --simple --server 4617)
+#new version because of https://github.com/Wlanfr3ak/auto-speedtest/issues/5
+vf=$(/usr/local/bin/speedtest --simple --server 4617)
+
 #ip=$(wget http://checkip.dyndns.org/ -q -O - | grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>')
 echo $ip
 DATE=$(date +"%Y-%m-%d")
