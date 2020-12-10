@@ -13,7 +13,8 @@ no_connection="999.0;0.0;0.0"
 #old version
 #vf=$(speedtest-cli --simple --server 4617)
 #new version because of https://github.com/Wlanfr3ak/auto-speedtest/issues/5
-vf=$(/usr/local/bin/speedtest --simple --server 4617)
+#vf=$(/usr/local/bin/speedtest --simple --server 4617) <-- Server ID is outdated :-(
+vf=$(/usr/local/bin/speedtest --simple)
 
 #ip=$(wget http://checkip.dyndns.org/ -q -O - | grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>')
 echo $ip
